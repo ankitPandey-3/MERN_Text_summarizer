@@ -16,7 +16,7 @@ export function ChangePassword({isLoggedIn}) {
       newPassword: event.target.newPassword.value
     }
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/auth/change-password', formData,{
+      const response = await axios.post('/api/v1/auth/change-password', formData,{
         withCredentials: true
       });
       if (response.data.statusCode === 200) {

@@ -16,7 +16,7 @@ export const View = ({ isLoggedIn, setIsLoggedIn }) => {
     useEffect(() => {
         const textHandler = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/v1/summ/summarizer/saved/${title}`, {
+                const response = await axios.get(`/api/v1/summ/summarizer/saved/${title}`, {
                     withCredentials: true
                 });
                 setInputText(response.data.data.inputText);

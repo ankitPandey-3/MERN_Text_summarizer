@@ -14,7 +14,7 @@ export function Login({setIsLoggedIn}) {
       password: event.target.password.value
     }
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/auth/login', formData,{
+      const response = await axios.post('/api/v1/auth/login', formData,{
         withCredentials: true
       });
       console.log(response.data.data)

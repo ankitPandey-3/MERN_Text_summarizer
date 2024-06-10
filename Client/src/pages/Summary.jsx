@@ -18,7 +18,7 @@ export const Summary = ({ isLoggedIn, setIsLoggedIn }) => {
       const formData = {
         inputText: inputText // using the state variable directly
       };
-      const response = await axios.post("http://localhost:8000/api/v1/summ/summarizer", formData, {
+      const response = await axios.post("/api/v1/summ/summarizer", formData, {
         withCredentials: true
       });
       setSummary(response.data.data.generatedText); // Assuming the response contains a 'summary' field
@@ -64,7 +64,7 @@ export const Summary = ({ isLoggedIn, setIsLoggedIn }) => {
       generatedText: summary
     }
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/summ/summarizer/save", formData, {
+      const response = await axios.post("/api/v1/summ/summarizer/save", formData, {
         withCredentials: true
       })
       if(response.data.statusCode === 201){

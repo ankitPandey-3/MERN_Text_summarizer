@@ -11,7 +11,7 @@ export function LoggedInHome({ setIsLoggedIn }) {
   useEffect(() => {
     const cardHandler = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/v1/summ/summarizer/saved', {
+        const response = await axios.get('/api/v1/summ/summarizer/saved', {
           withCredentials: true
         });
         const titles = response.data.data.map((doc) => doc.title);
@@ -28,7 +28,7 @@ export function LoggedInHome({ setIsLoggedIn }) {
       <div className=' w-auto lg:w-64 '>
         <SideBar setIsLoggedIn={setIsLoggedIn} />
       </div>
-      <div className='mt-4 w-full lg:w-3/4 '>
+      <div className='mt-4 w-full lg:w-3/4'>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8 ml-8 mr-5"
         >
           {cards.map((tile, index) => (

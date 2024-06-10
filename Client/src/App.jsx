@@ -9,12 +9,13 @@ import { View } from "./pages/View.jsx";
 import { ChangePassword } from "./pages/ChangePassword.jsx";
 import axios from "axios";
 function App() {
+  axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const validateAccessToken = async () => {
       try {
         // Make a request to validate the access token
-        const response = await axios.post('http://localhost:8000/api/v1/auth/validate-token',{}, { withCredentials: true });
+        const response = await axios.post('/api/v1/auth/validate-token',{}, { withCredentials: true });
         if (response.data.statusCode === 200) {
           
           setIsLoggedIn(true);
@@ -31,7 +32,7 @@ function App() {
     const refreshToken = async () => {
       try {
         // Make a request to refresh the access token
-        const response = await axios.post('http://localhost:8000/api/v1/auth/refresh-token',{}, { withCredentials: true });
+        const response = await axios.post('/api/v1/auth/refresh-token',{}, { withCredentials: true });
         setIsLoggedIn(true);
         if (response.data.statusCode === 200) {
           // Update the access token in local storage or wherever you want to store it

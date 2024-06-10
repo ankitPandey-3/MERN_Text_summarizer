@@ -17,7 +17,7 @@ export function Signup() {
       password: event.target.password.value
     }
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/auth/signup', formData);
+      const response = await axios.post('/api/v1/auth/signup', formData);
       console.log(response);
       if (response.data.statusCode === 200) {
         setErrorMessage('');

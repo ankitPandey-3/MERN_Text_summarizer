@@ -19,7 +19,7 @@ export function SideBar ({setIsLoggedIn}) {
   const handleLogout = async() => {
    
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/auth/logout',{},{
+      const response = await axios.post('/api/v1/auth/logout',{},{
         withCredentials: true
       });
       localStorage.removeItem('accessToken');
@@ -101,13 +101,6 @@ export function SideBar ({setIsLoggedIn}) {
             >
               <Cpu className="h-5 w-5" aria-hidden="true" />
               <span className="mx-2 text-l font-medium">Transformer</span>
-            </a>
-            <a
-              className="flex transform items-center rounded-lg px-3 py-2 text-white transition-colors duration-300 hover:bg-gray-50 hover:text-gray-700"
-              href="#"
-            >
-              <Brain className="h-5 w-5" aria-hidden="true" />
-              <span className="mx-2 text-l font-medium">G-A-N</span>
             </a>
           </div>
         </nav>

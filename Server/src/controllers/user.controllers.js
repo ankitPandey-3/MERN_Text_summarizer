@@ -121,7 +121,8 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: "none",
     }
 
     return res
@@ -155,7 +156,8 @@ const logoutUser = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: "none",
     }
 
     return res
@@ -190,9 +192,10 @@ const changeCurrentPassword = asyncHandler(async(req, res) => {
 const refreshAccessToken = asyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken;
 
-    if (!incomingRefreshToken) {
-        throw new ApiError(401, "unauthorized request")
-    }
+    // if (!incomingRefreshToken) {
+
+    //     throw new ApiError(401, "unauthorized request")
+    // }
 
     try {
         const decodedToken = jwt.verify(
@@ -213,7 +216,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     
         const options = {
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite: "none",
         }
     
         const {accessToken, refreshToken} = await generateAccessAndRefereshTokens(user._id)
@@ -242,7 +246,7 @@ const validateToken = asyncHandler(async(req, res) => {
         )
     }
     else{
-        console.log('Hello from error')
+        
         return res.status(200).json(
             new ApiError(404, "Token Invalid")
         )
